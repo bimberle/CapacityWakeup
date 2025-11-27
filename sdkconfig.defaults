@@ -1,0 +1,36 @@
+# SDKCONFIG.DEFAULTS (Hinweise und empfohlene Einstellungen)
+#
+# Dieses Datei ist ein kommentiertes Beispiel mit empfohlenen Einstellungen
+# für `idf.py menuconfig` / `sdkconfig`. ESP-IDF erwartet echte Kconfig-Optionen
+# (z. B. `CONFIG_...=y`) — hier geben wir nur Hinweise, damit du weißt,
+# welche Einstellungen nützlich sind. Du kannst die Optionen manuell in
+# `idf.py menuconfig` setzen oder die entsprechenden `CONFIG_`-Zeilen unten
+# entfernen/aktivieren, wenn du die genauen Kconfig-Namen bestätigt hast.
+
+# Empfohlene Einstellungen (prüfe sie in `idf.py menuconfig`):
+# - Component: USB/TinyUSB aktivieren (Device Mode)
+#   -> Per GUI: Component config  -> TinyUSB
+# - TinyUSB: Enable Device (HID class)
+# - USB Device: Remote Wakeup support enabled
+# - USB Console (CDC) optional deaktivieren, wenn du ausschließlich HID nutzt
+
+# Beispiel (nur als Kommentar; aktiviere nach Prüfung):
+# CONFIG_TINYUSB_ENABLED=y
+# CONFIG_TINYUSB_DEVICE=y
+# CONFIG_TINYUSB_HID_ENABLED=y
+# CONFIG_USB_SUPPORTS_REMOTE_WAKEUP=y
+
+# Target sicherstellen (dies wird normalerweise nicht in sdkconfig.defaults
+# gesetzt; `idf.py set-target esp32s3` genügt):
+# CONFIG_IDF_TARGET="esp32s3"
+
+# Hinweise zur Pin-Auswahl:
+# - Der Beispielcode in `main/main.c` nutzt `TOUCH_PAD_NUM0` als Touch-Eingang.
+#   Falls du ein bestimmtes Devboard (z. B. Espressif DevKitC-S3) verwendest,
+#   prüfe die Pinbelegung des Boards und weise `TOUCH_PAD_NUMX` dem gewünschten
+#   GPIO zu oder passe `TOUCH_PAD_SEL` in `main.c` an.
+# - Anschluss: Metallstück über ~1 MΩ Widerstand an den Touch-GPIO; optional
+#   ein 10 nF Kondensator zwischen Metall und GND zur Stabilisierung.
+
+# Falls du möchtest, dass ich die exakten `CONFIG_`-Zeilen in diese Datei
+# schreibe, teile mir bitte deine ESP-IDF-Version (z. B. "v5.1" oder "v4.4").

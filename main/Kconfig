@@ -1,0 +1,27 @@
+menu "CapacityWakeup configuration"
+
+config TOUCH_PAD_NUMBER
+    int "Touch pad number (TOUCH_PAD_NUMx)"
+    default 0
+    help
+      Wähle die Touch-Pad-Nummer, die dein Metall-Sensor benutzen soll.
+      Beispiel: 0 entspricht TOUCH_PAD_NUM0. Prüfe die Pinbelegung deines
+      Moduls / Devboards und passe den Wert entsprechend an.
+
+config LED_GPIO
+    int "Onboard LED GPIO (use -1 to disable)"
+    default 48
+    help
+      GPIO Nummer der Onboard-LED für Feedback. Setze -1 um LED-Feedback zu
+      deaktivieren. Beispiel: 48 (Standard hier), oder 38 falls dein Board die
+      LED auf GPIO38 hat.
+
+config ENABLE_RAW_LOG
+  bool "Enable raw touch value logging"
+  default y
+    help
+      Wenn aktiviert, gibt die Firmware nach der Baseline-Phase pro Poll-Zyklus
+      rohe Touch-Werte auf der seriellen Konsole aus (Prefix "RAW:"). Nützlich
+      für Feintuning oder für Nutzung durch das Autotune-Skript.
+
+endmenu
